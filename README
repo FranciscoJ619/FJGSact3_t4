@@ -1,0 +1,97 @@
+# CRUD con Springboot
+
+## Portada
+
+**Nombre:** Francisco Javier González Santiago
+
+### Descripción
+
+Este proyecto consiste en una aplicacion web que permite gestionar un catalogo de videojuegos usando operaciones CRUD (crear,
+leer, actualizar y borrar)
+
+Utiliza `MySQL` como Manejador de Base de Datos donde existen 2 tablas: Videojuego y genero, con sus propios atributos y en
+especial la tabla videojuego que cuenta con la clave foranea `id_genero`. Tambien se utiliza `Thymeleaf` para generar la 
+interfaz web.
+
+---
+
+## Documentación
+
+### Spring Initializr
+
+Para comenzar se utlizo esta pagina web para crear directamente el proyecto con las especificaciones aqui mostradas
+
+![Spring Initializr](img/captura12.png)
+
+### Clases(Modelos)
+
+Aqui se muestran las clases utilizadas dentro de MySQL
+
+La clase `Genero`, la cual consta de atributos como id, nombre y descripcion y contiene el elemento:
+
+```java
+@OneToMany(mappedBy = "genero")
+```
+El cual basicamente explica que un genero puede estar vinculado a varios videojuegos
+
+![Clase Genero](img/captura1.png)
+
+La clase `Videojuego`, la cual consta de atributos como id, nombre y desarrollador pero contiene el elemento:
+
+```java
+@ManyToOne
+@JoinColumn(name = "genero_id")
+```
+Lo cual nos muestra que puede tener una clave foranea
+
+![Clase Videojuego](img/captura2.png)
+
+### Clases(Repositorios)
+
+Son clases que se encargan de la comunicación con la base de datos mediante Spring Data JPA. Permiten realizar 
+operaciones como guardar, consultar, actualizar y eliminar registros sin necesidad de escribir manualmente 
+todas las consultas SQL.
+
+```java
+public interface GeneroRepository extends JpaRepository<Genero, Integer>{}
+```
+
+![Repositorio Genero](img/captura3.png)
+
+![Repositorio Videojuego](img/captura4.png)
+
+### Clases(Servicios)
+
+Las clases de Servicios se encargan de procesar las operaciones solicitadas, coordinar el uso de los 
+repositorios y aplicar las validaciones necesarias antes de modificar los datos.
+
+```java
+public VideojuegoService(VideojuegoRepository videojuegoRepository, GeneroRepository generoRepository)
+```
+
+![Servicio Genero](img/captura7.png)
+
+![Servicio Videojuego](img/captura8.png)
+
+### HTML(Paginas web)
+
+Aqui se muestran como quedaron hechas las paginas web que se utilizaron dentro del proyecto
+
+![Pagina principal(Lista)](img/captura9.png)
+
+![Pagina para editar y agregar](img/captura10.png)
+
+![Pagina principal despues de agregar un elemento](img/captura11.png)
+
+### VideojuegoController(Controlador)
+
+El controlador recibe las solicitudes HTTP del usuario, ejecutan las operaciones correspondientes mediante los 
+servicios y determinan qué vista debe mostrarse. En este proyecto gestionan las rutas del catálogo de videojuegos.
+
+![Navegacion en la carpeta para funciones](img/captura5.png)
+
+![Navegacion en la carpeta para funciones 2da parte](img/captura6.png)
+
+---
+
+Proyecto realizado para la materia de Programación Web.
