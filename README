@@ -23,6 +23,8 @@ Para comenzar se utlizo esta pagina web para crear directamente el proyecto con 
 
 ![Spring Initializr](img/captura12.png)
 
+---
+
 ### Clases(Modelos)
 
 Aqui se muestran las clases utilizadas dentro de MySQL
@@ -46,6 +48,8 @@ Lo cual nos muestra que puede tener una clave foranea
 
 ![Clase Videojuego](img/captura2.png)
 
+---
+
 ### Clases(Repositorios)
 
 Son clases que se encargan de la comunicación con la base de datos mediante Spring Data JPA. Permiten realizar 
@@ -60,6 +64,8 @@ public interface GeneroRepository extends JpaRepository<Genero, Integer>{}
 
 ![Repositorio Videojuego](img/captura4.png)
 
+---
+
 ### Clases(Servicios)
 
 Las clases de Servicios se encargan de procesar las operaciones solicitadas, coordinar el uso de los 
@@ -73,6 +79,8 @@ public VideojuegoService(VideojuegoRepository videojuegoRepository, GeneroReposi
 
 ![Servicio Videojuego](img/captura8.png)
 
+---
+
 ### HTML(Paginas web)
 
 Aqui se muestran como quedaron hechas las paginas web que se utilizaron dentro del proyecto
@@ -82,6 +90,8 @@ Aqui se muestran como quedaron hechas las paginas web que se utilizaron dentro d
 ![Pagina para editar y agregar](img/captura10.png)
 
 ![Pagina principal despues de agregar un elemento](img/captura11.png)
+
+---
 
 ### VideojuegoController(Controlador)
 
